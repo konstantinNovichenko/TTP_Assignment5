@@ -7,6 +7,10 @@ let rows = 0;
 let columns = 0;
 let buttonS = document.getElementById("button-submit");
 let tbl = document.getElementById("grid-table");
+let rowsMessage = document.getElementById("value-rows");
+let columnsMessage = document.getElementById("value-columns");
+rowsMessage.innerHTML = "Rows: " + rows.toString();
+columnsMessage.innerHTML = "Columns: " + columns.toString();
 
 //Used by color editor
 let currentColor = "red";
@@ -15,6 +19,8 @@ let dropDownMenu = document.getElementById("color-dropdowns");
 let buttonColorUncolored = document.getElementById("colorUncolored");
 let buttonColorAll = document.getElementById("colorAll");
 let buttonClearAll = document.getElementById("clearAll");
+let clickAndDrag = false;
+let mainBody = document.getElementsByTagName("html")[0];
 
 //-----------------------------GRID EDITOR------------------------------------
 
@@ -66,6 +72,9 @@ buttonS.addEventListener("click", function(event)
         removeTableColumns(removeColumns);
     }
 
+    //update counter message
+    rowsMessage.innerHTML = "Rows: " + rows.toString();
+    columnsMessage.innerHTML = "Columns: " + columns.toString();
 
     //reset values
     addColumns = 0;
@@ -90,10 +99,10 @@ function addNewRows(numRows)
         for(let j = 0; j < columns; j ++)
         {          
             //add new cell   
-            let newCell = newRow.insertCell(j); 
-            newCell.innerHTML = j.toString();  
+            let newCell = newRow.insertCell(j);             
             newCell.style.backgroundColor = defaultColor;           
             changeCellColor(newCell);
+            changeColorMouseDownAndHover(newCell); 
         }
 
     }
@@ -111,10 +120,10 @@ function addNewColumns(numCol)
         for(let j = columns; j < columns + numCol; j++)
         {     
             //add new cell       
-            let newCell = currentRow.insertCell(j); 
-            newCell.innerHTML = j.toString();     
+            let newCell = currentRow.insertCell(j);                 
             newCell.style.backgroundColor = defaultColor;           
-            changeCellColor(newCell);          
+            changeCellColor(newCell);    
+            changeColorMouseDownAndHover(newCell);      
         }
     }
 
@@ -219,4 +228,31 @@ buttonClearAll.addEventListener("click", function(event){
 
     }
   
+});
+
+//Change color of multiple cells on mouse down and hover
+function changeColorMouseDownAndHover(currentCell){
+    
+    currentCell.addEventListener("mousedown", function(event){        
+        clickAndDrag = true; 
+        currentCell.style.backgroundColor = currentColor;
+    });
+
+    currentCell.addEventListener("mouseup", function(event){       
+        clickAndDrag = false;                
+    });
+
+    
+    currentCell.addEventListener("mouseover", function(event){         
+        if(clickAndDrag)
+        {
+            currentCell.style.backgroundColor = currentColor;
+        }        
+    });    
+}
+
+//fixes the bug when mouse up happens outside the table 
+//and the coloring on mouse down and hover doesn't stop
+mainBody.addEventListener("mouseup", function(event){       
+    clickAndDrag = false;
 });
