@@ -3,63 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="assignment5.css">
+    <link rel="stylesheet" type="text/css" href="assignment5-style.css">
 </head>
 <body>
 
         <h1>ROW AND COLUMN EDITOR</h1>
-        <section>
-            <label for="addRows">addRows:</label>
-            <input type="text" id="addRows">
-        </section>
-        <section>
-            <label for="addColumns">addColumns:</label>
-            <input type="text" id="addColumns">
-        </section>
-        <section>
-            <label for="removeRows">removeRows:</label>
-            <input type="text" id="removeRows">
-        </section>
-        <section>
-            <label for="removeColumns">removeColumns:</label>
-            <input type="text" id="removeColumns">
-        </section>
+        <section id="options">
+            <section id="labels">
+                <div class = "labelChild">
+                    <label for="addColumns">Add Columns:</label>
+                </div>
+                <div class = "labelChild">
+                    <label for="addRows">Add Rows:</label>
+                </div>
+                <div class = "labelChild">
+                    <label for="removeRows">Remove Rows:</label>
+                </div>
+                <div class = "labelChild">
+                    <label for="removeColumns">Remove Columns:</label>
+                </div>             
+            </section>
+
+            <section id = "textfields">                
+                <input type="text" id="addRows">
+                <input type="text" id="addColumns">
+                <input type="text" id="removeRows">
+                <input type="text" id="removeColumns">
+            </section>
+
+            
+            
+        </section>       
+        
+        
 
         <section>
+            <br>
             <button type="button" id = "button-submit">Submit</button>
+            <br>
         </section>
+       
 
-        <section>
-            <button type="button" id = "colorUncolored">colorUncolored</button>
-        </section>
-        <section>
-            <button type="button" id = "colorAll">colorAll</button>
-        </section>
-
-        <section>
-            <button type="button" id = "clearAll">clearAll</button>
-        </section>
-
-        <div class="grid-container">
-            <!-- <div class="grid-item">1</div>
-            <div class="grid-item">2</div>
-            <div class="grid-item">3</div>
-            <div class="grid-item">4</div>
-            <div class="grid-item">5</div>
-            <div class="grid-item">6</div>
-            <div class="grid-item">7</div>
-            <div class="grid-item">8</div>
-            <div class="grid-item">9</div> -->
-          </div>
-
-
+        <table id="grid-table">              
+              
+        </table>
 
 
 
 
 
     <div clss="JScript">
-        <script src ="assignment5.js"></script>
+        <script src ="assignment5-script.js"></script>
     </div>
 </body>
 </html>
