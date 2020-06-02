@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+table, td{
+    border: 1px solid black;
+      
+}       
+    
+td{
+    width: 30px;
+    height: 30px;
+    align-content: center;  
+}
+  
+#options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+#labels
+{
+    display: flex;
+    flex-direction: column;
+    align-items: left;    
+    width: 150px;
+}
+
+#textfields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.labelChild{
+    display: flex;
+    flex-direction: column;
+    align-items: left;  
+    height: 22px;
+}
